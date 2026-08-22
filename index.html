@@ -3,47 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon Jeu Livre - Connexion</title>
+  <title>Mon Jeu Livre - Test</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="conteneur">
-    <h1>📖 Le Livre dont vous êtes le héros</h1>
-
-    <div id="message" class="message"></div>
-
-    <div class="carte">
-      <h2>Se connecter</h2>
-      <form id="form-connexion">
-        <label for="connexion-email">Email</label>
-        <input type="email" id="connexion-email" required>
-
-        <label for="connexion-password">Mot de passe</label>
-        <input type="password" id="connexion-password" required>
-
-        <button type="submit" class="bouton-principal">Se connecter</button>
-      </form>
+    <div class="entete-jeu">
+      <span>Mode test (sans compte)</span>
     </div>
 
-    <div class="carte">
-      <h2>Créer un compte</h2>
-      <form id="form-inscription">
-        <label for="inscription-pseudo">Pseudo</label>
-        <input type="text" id="inscription-pseudo" required>
+    <div class="carte chapitre">
+      <h2 id="chapitre-titre"></h2>
+      <img id="chapitre-image" src="" alt="" style="display:none;">
+      <p id="chapitre-texte"></p>
 
-        <label for="inscription-email">Email</label>
-        <input type="email" id="inscription-email" required>
-
-        <label for="inscription-password">Mot de passe</label>
-        <input type="password" id="inscription-password" minlength="6" required>
-
-        <button type="submit" class="bouton-principal">S'inscrire</button>
-      </form>
+      <div id="choix-container" class="choix-container"></div>
     </div>
   </div>
 
-  <script src="js/supabase-config.js"></script>
-  <script src="js/auth.js"></script>
+  <script src="js/game.js"></script>
 </body>
 </html>
