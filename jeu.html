@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Jeu Livre</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="conteneur">
+    <div class="entete-jeu">
+      <span>Joueur : <strong id="pseudo-joueur"></strong></span>
+      <button id="deconnexion" class="bouton-lien">Se déconnecter</button>
+    </div>
+
+    <div class="carte chapitre">
+      <h2 id="chapitre-titre"></h2>
+      <img id="chapitre-image" src="" alt="" style="display:none;">
+      <p id="chapitre-texte"></p>
+
+      <div id="choix-container" class="choix-container"></div>
+    </div>
+  </div>
+
+  <script src="js/supabase-config.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
