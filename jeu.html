@@ -21,6 +21,34 @@
     </div>
   </div>
 
+  <!-- Barre fixe du bas -->
+  <div class="barre-bas">
+    <button class="barre-bouton" data-panneau="stats">
+      <span class="barre-icone">⚔️</span>
+      <span class="barre-label">Stats</span>
+    </button>
+    <button class="barre-bouton" data-panneau="inventaire">
+      <span class="barre-icone">🎒</span>
+      <span class="barre-label">Inventaire</span>
+    </button>
+    <button class="barre-bouton" data-panneau="compagnons">
+      <span class="barre-icone">🧑‍🤝‍🧑</span>
+      <span class="barre-label">Compagnons</span>
+    </button>
+  </div>
+
+  <!-- Panneau popup (stats / inventaire / compagnons) -->
+  <div id="panneau-overlay" class="panneau-overlay">
+    <div class="panneau">
+      <div class="panneau-entete">
+        <h3 id="panneau-titre"></h3>
+        <button id="panneau-fermer" class="panneau-fermer">✕</button>
+      </div>
+      <div id="panneau-contenu" class="panneau-contenu"></div>
+    </div>
+  </div>
+
+  <script src="js/joueur.js"></script>
   <script src="js/game.js"></script>
 </body>
 </html>
