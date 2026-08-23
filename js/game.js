@@ -15,7 +15,6 @@ async function chargerChapitre(idChapitre) {
     if (!reponse.ok) throw new Error("Chapitre introuvable");
     const chapitre = await reponse.json();
 
-    // Applique les effets du chapitre (stats, inventaire, compagnons)
     appliquerEffets(chapitre.effets);
 
     afficherChapitre(chapitre);
@@ -62,7 +61,7 @@ function afficherChapitre(chapitre) {
 }
 
 // ============================================
-// BARRE DU BAS + PANNEAUX (stats / inventaire / compagnons)
+// BARRE DU BAS + PANNEAUX
 // ============================================
 
 const panneauOverlay = document.getElementById("panneau-overlay");
