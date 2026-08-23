@@ -1,8 +1,17 @@
 {
   "id": "chapitre_004",
   "titre": "La cabane",
-  "texte": "À l'intérieur, tu trouves un vieil homme qui t'attendait depuis des années. Il te confie un secret qui changera le cours de ton aventure. Ton histoire continue ailleurs...",
+  "texte": "À l'intérieur, tu trouves un vieil homme qui t'attendait depuis des années. Il te confie une vieille torche et accepte de t'accompagner dans ton aventure.",
   "image": "",
+  "effets": {
+    "stats": { "pointsDeVie": 5 },
+    "inventaire_ajoute": [
+      { "nom": "Torche", "description": "Éclaire les passages sombres." }
+    ],
+    "compagnons_ajoute": [
+      { "nom": "Le vieil homme", "description": "Un guide mystérieux qui connaît la forêt par cœur." }
+    ]
+  },
   "choix": [],
   "fin": true
 }
