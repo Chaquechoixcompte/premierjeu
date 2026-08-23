@@ -14,6 +14,7 @@ body {
 .conteneur {
   max-width: 640px;
   margin: 0 auto;
+  padding-bottom: 90px;
 }
 
 h1 {
@@ -129,10 +130,6 @@ input {
   font-size: 1.3em;
   color: #d4af37;
   letter-spacing: 2px;
-}
-/* Laisse de la place en bas pour ne pas que la barre fixe cache le contenu */
-.conteneur {
-  padding-bottom: 90px;
 }
 
 /* Barre fixe du bas */
