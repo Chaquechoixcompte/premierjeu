@@ -14,6 +14,10 @@ async function chargerChapitre(idChapitre) {
     const reponse = await fetch(`chapitres/${idChapitre}.json`);
     if (!reponse.ok) throw new Error("Chapitre introuvable");
     const chapitre = await reponse.json();
+
+    // Applique les effets du chapitre (stats, inventaire, compagnons)
+    appliquerEffets(chapitre.effets);
+
     afficherChapitre(chapitre);
   } catch (err) {
     texteEl.textContent = "Erreur : impossible de charger ce chapitre (" + idChapitre + ").";
@@ -56,5 +60,69 @@ function afficherChapitre(chapitre) {
     choixEl.appendChild(bouton);
   });
 }
+
+// ============================================
+// BARRE DU BAS + PANNEAUX (stats / inventaire / compagnons)
+// ============================================
+
+const panneauOverlay = document.getElementById("panneau-overlay");
+const panneauTitre = document.getElementById("panneau-titre");
+const panneauContenu = document.getElementById("panneau-contenu");
+const panneauFermer = document.getElementById("panneau-fermer");
+const boutonsBarre = document.querySelectorAll(".barre-bouton");
+
+function ouvrirPanneau(type) {
+  if (type === "stats") {
+    panneauTitre.textContent = "Statistiques";
+    panneauContenu.innerHTML = `
+      <div class="stat-ligne"><span>⚔️ Attaque</span><strong>${joueur.stats.attaque}</strong></div>
+      <div class="stat-ligne"><span>🛡️ Défense</span><strong>${joueur.stats.defense}</strong></div>
+      <div class="stat-ligne"><span>❤️ Points de vie</span><strong>${joueur.stats.pointsDeVie}</strong></div>
+    `;
+  }
+
+  if (type === "inventaire") {
+    panneauTitre.textContent = "Inventaire";
+    if (joueur.inventaire.length === 0) {
+      panneauContenu.innerHTML = `<p class="panneau-vide">Ton inventaire est vide pour l'instant.</p>`;
+    } else {
+      panneauContenu.innerHTML = joueur.inventaire.map(objet => `
+        <div class="objet-ligne">
+          <strong>${objet.nom}</strong>
+          <p>${objet.description || ""}</p>
+        </div>
+      `).join("");
+    }
+  }
+
+  if (type === "compagnons") {
+    panneauTitre.textContent = "Compagnons";
+    if (joueur.compagnons.length === 0) {
+      panneauContenu.innerHTML = `<p class="panneau-vide">Tu n'as pas encore de compagnon.</p>`;
+    } else {
+      panneauContenu.innerHTML = joueur.compagnons.map(compagnon => `
+        <div class="objet-ligne">
+          <strong>${compagnon.nom}</strong>
+          <p>${compagnon.description || ""}</p>
+        </div>
+      `).join("");
+    }
+  }
+
+  panneauOverlay.classList.add("ouvert");
+}
+
+function fermerPanneau() {
+  panneauOverlay.classList.remove("ouvert");
+}
+
+boutonsBarre.forEach((bouton) => {
+  bouton.addEventListener("click", () => ouvrirPanneau(bouton.dataset.panneau));
+});
+
+panneauFermer.addEventListener("click", fermerPanneau);
+panneauOverlay.addEventListener("click", (e) => {
+  if (e.target === panneauOverlay) fermerPanneau();
+});
 
 chargerChapitre(CHAPITRE_DEPART);
